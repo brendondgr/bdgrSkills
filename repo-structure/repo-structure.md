@@ -13,8 +13,12 @@ root/
 ├── docs/       # Project documentation and architectural overviews
 ├── libs/       # Shared libraries and internal packages
 ├── utils/      # Utility functions and helper classes
-└── web/        # Web application components and assets
+└── [workflow]/ # Domain-specific folders (e.g., web/, api/, core/)
 ```
+
+### Workflow-Specific Structures
+App-specific structures are documented individually to keep our core guidelines clean.
+- [Web Interfaces](structures/web-interfaces.md)
 
 ---
 
@@ -36,29 +40,12 @@ Utilities that support the main codebase.
 
 ---
 
-## 3. Web Components (`web/`)
-The `web/` directory handles all web-based items and follows a highly templatized hierarchy.
-
-```text
-web/
-├── static/
-│   ├── css/    # Categorized CSS files
-│   └── js/     # Categorized JavaScript files
-├── images/     # Assets (SVG and standard formats)
-└── templates/  # HTML templates
-```
-
-- **Templates:** Main `.html` pages are placed directly inside `templates/`.
-- **Parts/Components:** Any HTML fragments or partials that build upon the main pages should be stored in sub-directories named after the parent page.
-
----
-
-## 4. Libraries (`libs/`)
+## 3. Libraries (`libs/`)
 Internal libraries and external-facing components are modularized within the `libs/` directory.
 
 ---
 
-## Code Guidelines
+## Global Code Guidelines
 
 ### File Length Limits
 - **Maximum Length:** 800 lines.
@@ -66,13 +53,13 @@ Internal libraries and external-facing components are modularized within the `li
 - **Rule:** Favor modularity. If a file exceeds 800 lines, outsource logic to secondary files/modules.
 
 ### Package Management
-We use `uv` as the primary package manager for all projects.
+We use `uv` as the primary package manager for all Python projects.
 - **Primary Commands:** `uv add`, `uv init`, `uv run`.
 - Avoid using other package managers unless explicitly required by environment constraints.
 
 ---
 
-## Examples
+## Universal Examples
 
 ### Utility Organization (`utils/`)
 
@@ -84,23 +71,14 @@ We use `uv` as the primary package manager for all projects.
     - `oauth.py` – Handles OAuth2 flows.
     - `session.py` – Manages user sessions.
 
-### Web Template Organization (`web/templates/`)
-
-- **Main Page:** `web/templates/dashboard.html`
-- **Dashboad Fragments:**
-  - `web/templates/dashboard/nav.html`
-  - `web/templates/dashboard/sidebar.html`
-  - `web/templates/dashboard/charts.html`
-
 ### Directory Summary Table (Sample `docs/structure.md` entry)
 
 | File / Folder | Purpose |
 | :--- | :--- |
-| `web/templates/index.html` | The primary entry point for the landing page. |
-| `web/templates/index/hero.html` | The hero section component for the landing page. |
 | `utils/database.py` | Minimal database connection wrapper. |
 | `utils/payment_engine/` | Sub-folder for complex transaction logic. |
+| `libs/analytics/` | Internal event-tracking package. |
 
 ---
 
-*Last Updated: 2026-02-28*
+*Last Updated: 2026-03-27*
