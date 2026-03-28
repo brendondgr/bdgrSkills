@@ -1,29 +1,41 @@
 # Motion & Animations
 
-Powered by **GSAP** and CSS. Animations should feel intentional, fluid, and tactical.
+GSAP is the standard for complex programmatic animations. CSS is used for simple micro-interactions.
 
-### Core Behaviors
-- **Micro-interactions**: Use GSAP `CustomEase` or `elastic` for a snappy, springy feel.
-- **Load Sequences**: Prefer staggered reveals (`animation-delay`) over scattered motion.
-- **Visibility**: Fade-in to `100%` opacity. If an element starts on-screen, it must be instantly visible.
+### Rules
+- **Micro-animations**: Use GSAP `CustomEase` or CSS `cubic-bezier` for spring/elastic, snappy feel.
+- **Visibility**: Elements entering the screen should fade/slide in to `opacity: 1`. Elements starting on-screen must be `100%` visible immediately.
+- **Hover Lift**: Cards feature a hover lift effect and slight scale-up. On mobile, map these to touch active states.
 
-### Structural Example
-```javascript
-// GSAP Stagger Reveal
-gsap.from(".card", {
-  y: 30,
-  opacity: 0,
-  stagger: 0.1,
-  ease: "power3.out"
-});
+### GSAP Implementation (React Example)
+
+```jsx
+// React + GSAP Stagger Reveal
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+
+export function AnimatedList({ items }) {
+  const container = useRef();
+  
+  useLayoutEffect(() => {
+    gsap.from(container.current.children, {
+      y: 20,
+      opacity: 0,
+      stagger: 0.05,
+      ease: "power3.out",
+      duration: 0.6
+    });
+  }, []);
+
+  return <ul ref={container} className="space-y-2">{/* items */}</ul>;
+}
 ```
 
-```css
-/* CSS Hover Lift */
-.hover-card {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hover-card:hover {
-  transform: translateY(-4px) scale(1.02);
-}
+### CSS Implementation (UnoCSS/Tailwind)
+
+```html
+<!-- Interactive Card with Hover Lift -->
+<div class="transform transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98] active:translate-y-0 shadow-lg hover:shadow-xl">
+  Card Content
+</div>
 ```

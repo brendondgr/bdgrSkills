@@ -1,19 +1,28 @@
 # Typography
 
-Choose characterful, distinctive fonts. Pair display fonts with refined body text.
+Typography must be legible on both small mobile screens and large desktop displays.
 
-### Font Types
-- **Headings**: Geometric and modern typefaces for a sleek personality.
-- **Body**: Clean sans-serif optimized for information density.
-- **Mono**: Monospaced for data, labels, and metadata.
+### Core Choices
+- **Headings**: Geometric and modern typefaces that provide a sleek, functional personality. Scale down appropriately on mobile.
+- **Body**: Clean sans-serif aesthetics chosen for high legibility in information-dense views.
+- **Mono**: Monospaced fonts used for labels, numerical values, and metadata.
 
-### Guidelines
-- **NEVER** use: Inter, Arial, Roboto, or standard system defaults.
-- Create contrast through dramatic sizing and weights.
+### Responsive Implementation (UnoCSS/Tailwind)
+Use fluid typography or breakpoint-specific utility classes to ensure mobile readability without horizontal overflow.
 
-### Structural Example
 ```html
-<h1 class="font-display text-4xl font-bold tracking-tight">System Core</h1>
-<p class="font-body text-secondary text-sm">Active processes running.</p>
-<span class="font-mono text-xs text-primary">0x4F2A</span>
+<!-- Responsive Heading structure -->
+<h1 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
+  Dashboard Overview
+</h1>
+
+<!-- Body text adapting to screen size -->
+<p class="font-body text-sm sm:text-base text-gray-400 mt-2 max-w-[65ch]">
+  Detailed metrics and system analysis.
+</p>
+
+<!-- Tabular data in Mono -->
+<span class="font-mono text-xs md:text-sm text-primary tabular-nums">
+  1,024.50
+</span>
 ```

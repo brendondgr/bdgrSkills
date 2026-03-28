@@ -5,7 +5,14 @@ description: Use this skill when the user asks to build web components, pages, a
 
 # Frontend Design & UI System
 
-This system guides the creation of distinctive, production-grade interfaces using **UnoCSS** and **GSAP**. It embraces high-contrast, dark-mode aesthetics with intentional design choices that avoid generic "AI slop".
+**CRITICAL REQUIREMENT**: The user MUST specify which technology stack to use for implementation. You must actively confirm the requested stack if it is not provided. Supported technologies include:
+- **Astro**
+- **UnoCSS**
+- **Tailwind**
+- **GSAP**
+- **React**
+
+This system guides the creation of distinctive, production-grade interfaces. It embraces high-contrast, dark-mode aesthetics with intentional design choices, heavily optimized for mobile-first responsiveness.
 
 ## Core Principles
 - **Purpose & Tone**: Choose a bold, memorable direction (maximalist chaos, raw brutalism, refined minimalism, etc.).
