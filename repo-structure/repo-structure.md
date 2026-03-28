@@ -20,6 +20,7 @@ root/
 App-specific structures are documented individually to keep our core guidelines clean.
 - [Web Interfaces](structures/web-interfaces.md)
 - [Lab Reports](structures/lab-reports.md)
+- [LangGraph Structure](structures/langgraph.md)
 
 ---
 
