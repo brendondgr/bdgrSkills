@@ -1,8 +1,3 @@
----
-name: LangGraph Structure Standard
-description: File structure and organization standards for LangGraph implementations.
----
-
 # LangGraph Structure
 
 A clean LangGraph repository usually works best when you separate **graph wiring**, **business logic**, **state/schema**, and **infrastructure concerns** instead of putting everything into one large `agent.py`. LangChain’s own LangGraph application structure recommends a project with app code in one package plus `langgraph.json`, dependency files, and optional environment config, which is a good baseline to build on.
