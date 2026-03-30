@@ -24,5 +24,6 @@ This system guides the creation of distinctive, production-grade interfaces. It 
 - [Layout & Geometry](ui/geometry.md)
 - [Motion & Animations](ui/motion.md)
 - [Buttons & Interactive Elements](ui/buttons.md)
+- [Dropdowns & Selects](ui/dropdowns.md)
 - [Modals & Popups](ui/modals.md)
 - [Icons System](ui/icons.md)
