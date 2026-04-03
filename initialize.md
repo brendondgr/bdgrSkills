@@ -1,6 +1,7 @@
 # Repository Initialization & Skill Setup
 
-Hello! I am your AI assistant. My goal is to help you initialize this repository and set up your agentic programming skills based on your project's needs. We will do this in 4 easy steps.
+Hello! I am your AI assistant. My goal is to help you initialize this repository and set up your agentic programming skills based on your project's needs. We will do this in 6 easy steps.
+**Important:** We will **always** use `uv` as our package manager for Python environments.
 
 ## Step 1: Define Project Goals
 **AI Agent Instruction:** Ask the user the following question: 
@@ -9,18 +10,25 @@ Hello! I am your AI assistant. My goal is to help you initialize this repository
 
 ## Step 2: Skill Discovery and Selection
 **AI Agent Instruction:** 
-1. Scan and read the `.md` files located in the sub-directories of this workspace (e.g., `repo-structure/SKILL.md`, `ui-frontend/SKILL.md`, and any files in their subfolders).
-2. Cross-reference the contents of these files with the user's goals provided in Step 1.
-3. Propose a curated list of the `.md` files/skills that will be most useful for their specific task.
+1. Run `uv run read-yaml.py` to recursively scan and read the YAML frontmatter of all `SKILL.md` files in this repository.
+2. Cross-reference the parsed skills with the user's goals provided in Step 1.
+3. Propose a curated list of the skills/directories that will be most useful for their specific task.
 -> **Wait for the user to confirm or modify the list before proceeding.**
 
-## Step 3: Environment Selection
+## Step 3: Sub-directory Checklists (SETUP)
+**AI Agent Instruction:**
+For each of the selected sub-directories (e.g., `repo-structure`, `ui-frontend`), locate and read their contained `SETUP.md` files. Ask the user the questions detailed in those setup files to further define the requirements. (For example, if `repo-structure` is selected, ask whether they are using Flask, Django, Node, etc., and populate `repo-structure/web-interfaces/` accordingly).
+-> **Wait for the user's response before proceeding.**
+
+## Step 4: Environment Selection
 **AI Agent Instruction:** Ask the user the following question:
 *"Which IDEs or Agentic Programming software do you intend to use for this project? (Options covered: Claude Code, OpenAI Codex, Antigravity, Gemini CLI, Cursor)."*
 -> **Wait for the user's response before proceeding.**
 
-## Step 4: First-Time Setup
-**AI Agent Instruction:** Using the approved skills from Step 2 and the requested environment(s) from Step 3, generate the appropriate directory structures and configuration files in this repository. You **must** strictly adhere to the following rules for each respective software tool:
+## Step 5: First-Time Setup
+**AI Agent Instruction:** Using the approved skills from Step 2, the requirements from Step 3, and the requested environment(s) from Step 4, generate the appropriate directory structures and configuration files in this repository. Delete any unneeded sub-directories or structure files that were not selected for this project.
+
+You **must** strictly adhere to the following rules for each respective software tool:
 
 ---
 
@@ -136,3 +144,9 @@ alwaysApply: false               # if true, rule is injected into every prompt
 - `alwaysApply`: Optional boolean. When `true`, the rule is always prepended regardless of context.
 
 The four activation modes — **Always**, **Auto-Attached** (globs), **Agent-Requested** (description-based), and **Manual** — are controlled entirely by how you set these three fields.
+
+## Step 6: Finalization & Cleanup
+**AI Agent Instruction:** 
+1. Create a `doc/` directory with a file named `documentation.md`. This file should detail the full finalized tech stack, the general structure of the repository, and any other relevant architectural notes.
+2. Delete files that are no longer needed post-setup. This includes: `initialize.md`, `read-yaml.py`, and the original `README.md`.
+3. Inform the user that the setup is complete and the repository is ready for active development.
