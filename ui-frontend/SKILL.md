@@ -17,6 +17,8 @@ This system guides the creation of distinctive, production-grade interfaces. It 
 ## Core Principles
 - **Purpose & Tone**: Choose a bold, memorable direction (maximalist chaos, raw brutalism, refined minimalism, etc.).
 - **Execution**: Meticulous details, no overused fonts (Inter/Roboto), and avoiding generic purple gradients or predictable layouts.
+- **ADA Compliance & Accessibility**: All designs must explicitly adhere to WCAG 2.2 AA standards (e.g., minimum contrast of 4.5:1 for text, 3:1 for non-text UI, visible focus indicators, and semantic HTML).
+- **Mobile-First & Readability**: Enforce large, legible text (minimum 16px body on mobile), generous spacing, and touch-target minimums (44x44px).
 
 ## Component & Asset Index
 - [Colors & Themes](ui/colors.md)
@@ -27,3 +29,4 @@ This system guides the creation of distinctive, production-grade interfaces. It 
 - [Dropdowns & Selects](ui/dropdowns.md)
 - [Modals & Popups](ui/modals.md)
 - [Icons System](ui/icons.md)
+- [Data Visualization & Graphs](ui/data-viz.md)

@@ -1,25 +1,28 @@
 # Colors & Themes
 
-The application uses a carefully curated dark-mode color system. All color implementations must be responsive and adapt to different screen contexts while maintaining high contrast.
+The application relies heavily on a high-contrast, dark-mode color system adhering rigorously to ADA WCAG 2.2 AA standards. All color palettes must maintain high contrast to guarantee text legibility.
+
+### Core Accessibility Mandates
+- **Text & Core Information**: Must strictly meet a contrast ratio of **4.5:1** against the background.
+- **Large Text, Icons & Borders**: Non-text UI components (active borders, input elements, interactive buttons) and large text require a contrast ratio of **3:1**.
+- **Information Dependency**: Color must **never** be the only way to convey meaning. Pair critical status colors with distinct icons, descriptive text, patterns, or borders to ensure information is distinguishable for color-blind users.
 
 ### Neutral Base
 - **Background**: `#0a0a0a` (Deep Matte Black) — Provides a stark, high-contrast canvas.
-- **Surface**: `#141414` (Dark Gray) — Used for cards and secondary panels.
+- **Surface**: `#141414` (Dark Gray) — Used for cards and secondary panels. Ensure text over this surface passes contrast checks.
 - **Elevated**: `#1e1e1e` (Lighter Gray) — Used for modals, dropdowns, and floating elements.
 
 ### Brand Colors (Neon & Vibrant)
-The interface relies on high-energy, neon colors to pop against the dark matte backgrounds. These must be used intentionally to create "glow" effects and draw focus.
-
-Select from this extended neon palette when defining your application's unique signature (use RGB values for opacity manipulation via CSS variables):
-- **Cyber Cyan**: `#00f0ff` | `0, 240, 255` — Excellent for primary interactive elements and futuristic tech styling.
-- **Toxic Green**: `#39ff14` | `57, 255, 20` — High-contrast success states or hyper-visible calls to action.
-- **Matrix Mint**: `#00ff9d` | `0, 255, 157` — Slightly softer neon green, ideal for primary branding.
+Select from this extended neon palette to create the application's unique signature:
+- **Cyber Cyan**: `#00f0ff` | `0, 240, 255` — Excellent for primary interactive elements. Use darkened or outlined variants if overlaying text to preserve contrast.
+- **Toxic Green**: `#39ff14` | `57, 255, 20` — High-contrast success states. Pair with distinct checkmarks.
+- **Matrix Mint**: `#00ff9d` | `0, 255, 157` — Slightly softer neon green.
 - **Plasma Pink**: `#ff007f` | `255, 0, 127` — Bold accents, active states, or intense notification dots.
-- **Hot Magenta**: `#d500ff` | `213, 0, 255` — Deep but vibrant, great for dark glows paired with cyan or pink.
-- **Electric Violet**: `#7000ff` | `112, 0, 255` — Secondary cool tones that maintain a luminescent quality.
-- **Atomic Orange**: `#ff5500` | `255, 85, 0` — Warnings, secondary actions, or energetic highlights.
-- **Laser Lemon**: `#eaff00` | `234, 255, 0` — Badges, prominent warnings, or extreme contrast text on dark backgrounds.
-- **Neon Crimson (Danger)**: `#ff003c` | `255, 0, 60` — High-visibility alert reds for destructive actions and critical errors.
+- **Hot Magenta**: `#d500ff` | `213, 0, 255` — Deep but vibrant.
+- **Electric Violet**: `#7000ff` | `112, 0, 255` — Secondary tones with luminescent qualities.
+- **Atomic Orange**: `#ff5500` | `255, 85, 0` — Warning indications paired with warning triangle icons.
+- **Laser Lemon**: `#eaff00` | `234, 255, 0` — Extreme contrast notifications. Black text recommended over this color.
+- **Neon Crimson (Danger)**: `#ff003c` | `255, 0, 60` — Destructive action alerts. Always pair with text reading "Error" or "Delete" (do not rely on red alone).
 
 ### Categorization Tones
 Used for classifying various data types:
