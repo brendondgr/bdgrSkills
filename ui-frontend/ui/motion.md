@@ -3,11 +3,12 @@
 GSAP is the standard for complex programmatic animations. CSS is used for simple micro-interactions. However, **animations must never risk triggering seizures or breaking accessibility norms**.
 
 ### Rules & Accessibility Mandates
-- **Micro-animations**: Use GSAP `CustomEase` or CSS `cubic-bezier` for a snappy, fluid feel.
+- **Micro-animations**: Use GSAP `CustomEase` or CSS `cubic-bezier` for a snappy, fluid feel. Ensure Interaction to Next Paint (INP) is always < 200ms.
+- **Performance & CLS Prevention**: To maintain a Cumulative Layout Shift (CLS) under < 0.1, always define `width` and `height` on images or use **skeleton loaders** (`shimmer` or `pulse` animations) instead of blank screens while content loads asynchronously. Avoid causing layout jumps.
 - **Visibility**: Elements entering the screen should fade/slide in. Ensure all final elements reach a minimum **4.5:1 text-contrast threshold**. Elements starting on-screen must be `100%` visible immediately.
 - **Seizure Restrictions (ADA)**: Do not create effects that flash or heavily alternate color more than 3 times per second. Flashing must be tightly controlled or entirely avoided.
-- **Reduced Motion**: All animations (CSS or GSAP) must respect `prefers-reduced-motion: reduce`. Users must have the option to easily disable intense visual animation.
-- **Hover Lift**: Cards feature a hover lift effect and slight scale-up. On mobile, map these mapped to touch-active states within `44x44px` targets.
+- **Reduced Motion**: All animations (CSS or GSAP) must respect `prefers-reduced-motion: reduce`. Users must have the option to easily disable intense visual animation. Disable decorative animations if reduced motion is requested.
+- **Hover Lift**: Cards feature a hover lift effect and slight scale-up. On mobile, map these to touch-active states within `44x44px` minimum tap targets.
 
 ### GSAP Implementation (React Example)
 

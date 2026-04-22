@@ -1,13 +1,14 @@
-# Buttons & Interactive Elements
+# Buttons, Inputs & Interactive Elements
 
-Interactive controls must enforce a mobile-first design system with generous minimum touch/hit areas of `44x44px`. All interactive components must be rigorously keyboard navigable.
+Interactive controls must enforce a mobile-first design system with generous minimum touch/hit areas of `44x44px`. All interactive components must be rigorously keyboard navigable and spaced apart appropriately to prevent accidental mis-taps.
 
 ### Accessibility & Interaction States
-- **Focus Indicators**: Every interactive button must display a high-contrast focus ring (e.g., `focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none`) when navigated via keyboard. Ensure focused elements are not clipped or hidden.
-- **Labels & Context**: Icon-only buttons must provide an `aria-label` or visually hidden screen reader text. Links posing as buttons should be `<a>` elements with proper readable text instead of relying on "Click Here" or "Read More".
-- **Hover/Touch**: Themed neon glows or background tinting. Active states provide immediate feedback.
-- **Contrast**: Button text foreground must meet **4.5:1** contrast with its background, while the physical button borders or background must maintain **3:1** against the body text.
-- **Segmented Controls**: Snappy transitions between active states without losing keyboard arrow-key support.
+- **Focus Indicators**: Every interactive button and form field must display a high-contrast focus ring (e.g., `focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none`) when navigated via keyboard. Ensure focused elements are not clipped or hidden.
+- **Labels & Context**: Icon-only buttons must provide an `aria-label` or visually hidden screen reader text. Links posing as buttons should be `<a>` elements with proper readable text.
+- **Hover & Touch (No Hover-Only UI)**: Themed neon glows or background tinting. **Hover-dependent tooltips and menus must be replaced with tap/toggle patterns on mobile devices**. Use `@media (hover: none)` to strictly adapt interactions. All tappable elements require a visually clear `:active` feedback state.
+- **Contrast**: Button text foreground must meet **4.5:1** contrast.
+- **Form Fields & Inputs**: Maintain a minimum height of **44px** per input. Use appropriate semantic input types (`type="email"`, `type="tel"`, `type="number"`) so mobile browsers show the correct specialized keyboards. Incorporate `autocomplete` attributes aggressively to reduce typing friction. Always supply inline validation rather than submitting blindly.
+- **Mobile Navigation**: For fewer than 5 main routes, use a **bottom tab bar**. For 5+ items, use a hamburger menu that logically groups links. Anchor primary CTAs within lower-screen thumb reach.
 
 ### Implementation Structure (UnoCSS/Tailwind)
 
