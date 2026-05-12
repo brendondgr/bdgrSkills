@@ -1,6 +1,6 @@
 ---
-name: Repository Structure Standard
-description: Universal file structure and organization standards for repository consistency and maintainability.
+name: repo-structure
+description: Use this skill when setting up, restructuring, documenting, or enforcing repository layout standards for projects, including web apps, backend systems, CLI tools, and agentic AI systems.
 ---
 # Repository Structure Standard
 
@@ -21,6 +21,8 @@ App-specific structures are documented individually to keep our core guidelines 
 - [Web Interfaces](structures/web-interfaces.md)
 - [Lab Reports](structures/lab-reports.md)
 - [LangGraph Structure](structures/langgraph.md)
+
+For websites, dashboards, and web applications, this skill must be paired with `website-architecture`. The web architecture skill owns the route map, app mode, frontend/backend boundary, data flow, documentation requirements, and deployment assumptions before files are generated.
 
 ---
 

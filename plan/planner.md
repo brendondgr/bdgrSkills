@@ -1,6 +1,6 @@
-﻿# Skill: Plan Creation
+# Plan Creation Reference
 
-**Description**: Guidelines for the AI to generate explicit, clear, and hierarchical step-by-step problem-solving plans.
+Guidelines for the AI to generate explicit, clear, and hierarchical step-by-step problem-solving plans.
 
 ## Trigger
 When a user asks to "create a plan", "plan this out", or requests structured steps to solve a problem.

@@ -3,7 +3,9 @@
 When configuring the repository structure, please answer the following questions to help tailor the environment to your tech stack:
 
 1. **Web Interface Generation:** Are we creating a web interface specific structure, or is this a purely backend/CLI project?
-2. **Backend Framework:** If building web interfaces, will we be using Flask, Django, or keeping it Static?
-3. **Node.js Integration:** Are we incorporating Node into this project (e.g., for frontend builds or a backend server)?
+2. **Primary Runtime:** What is the main runtime or language for the project (Python with `uv`, Node, mixed full-stack, static-only, or another runtime)?
+3. **Repository Shape:** Is this a single app, a multi-app workspace, or a library/tooling repository?
+4. **Shared Code:** Will the project need shared `libs/`, `utils/`, or contract/schema folders?
+5. **Generated Documentation:** Which structure documents must be created or updated beyond `docs/structure.md`?
 
-*(AI Note: Based on the answers to these questions, ensure the correct structure is adopted and save the specific design details to `repo-structure/web-interfaces/` if dealing with a web interface.)*
+*(AI Note: If the answer indicates a website, dashboard, frontend, Flask app, Django app, Astro site, React/Vite app, or API-backed web interface, immediately route the setup into `website-architecture/SETUP.md`. Web-specific details must be captured there before repository files are generated.)*

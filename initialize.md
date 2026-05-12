@@ -17,7 +17,33 @@ Hello! I am your AI assistant. My goal is to help you initialize this repository
 
 ## Step 3: Sub-directory Checklists (SETUP)
 **AI Agent Instruction:**
-For each of the selected sub-directories (e.g., `repo-structure`, `ui-frontend`), locate and read their contained `SETUP.md` files. Ask the user the questions detailed in those setup files to further define the requirements. (For example, if `repo-structure` is selected, ask whether they are using Flask, Django, Node, etc., and populate `repo-structure/web-interfaces/` accordingly).
+For each selected sub-directory (for example, `repo-structure`, `website-architecture`, or `ui-frontend`), locate and read its contained `SETUP.md` file. Ask the user the questions detailed in those setup files to further define the requirements.
+
+### Required Website Architecture Branch
+
+If the user's project goals mention a website, web app, dashboard, admin panel, frontend, UI, Flask, Django, Astro, React, Vite, static site, or API-backed web interface, or if either `repo-structure` or `ui-frontend` is selected for a web project, you must include and run the `website-architecture` setup phase before any UI generation.
+
+For website projects, the setup phase must produce a concise architecture planning artifact before Step 5. This artifact must define:
+
+- application mode
+- user roles and auth boundaries
+- route map
+- data-flow map
+- frontend/backend boundary
+- selected repository layout
+- required documentation files
+- build, run, and test commands
+
+For website projects, create or update these documentation files during setup/finalization:
+
+- `docs/architecture.md`
+- `docs/structure.md`
+- `docs/routes.md`
+- `docs/component-map.md`
+- `docs/data-flow.md`
+- `docs/deployment.md`
+- `docs/api-contract.md` when a backend or API contract exists
+
 -> **Wait for the user's response before proceeding.**
 
 ## Step 4: Environment Selection
@@ -26,7 +52,9 @@ For each of the selected sub-directories (e.g., `repo-structure`, `ui-frontend`)
 -> **Wait for the user's response before proceeding.**
 
 ## Step 5: First-Time Setup
-**AI Agent Instruction:** Using the approved skills from Step 2, the requirements from Step 3, and the requested environment(s) from Step 4, generate the appropriate directory structures and configuration files in this repository. Delete any unneeded sub-directories or structure files that were not selected for this project.
+**AI Agent Instruction:** Using the approved skills from Step 2, the requirements from Step 3, the website architecture planning artifact when applicable, and the requested environment(s) from Step 4, generate the appropriate directory structures and configuration files in this repository.
+
+Preserve the selected skills and their supporting files. Only delete unneeded starter sub-directories, structure files, or initialization helpers after confirming they are unrelated to the selected project direction.
 
 You **must** strictly adhere to the following rules for each respective software tool:
 
@@ -147,6 +175,7 @@ The four activation modes — **Always**, **Auto-Attached** (globs), **Agent-Req
 
 ## Step 6: Finalization & Cleanup
 **AI Agent Instruction:** 
-1. Create a `doc/` directory with a file named `documentation.md`. This file should detail the full finalized tech stack, the general structure of the repository, and any other relevant architectural notes.
-2. Delete files that are no longer needed post-setup. This includes: `initialize.md`, `read-yaml.py`, and the original `README.md`.
-3. Inform the user that the setup is complete and the repository is ready for active development.
+1. Create or update `docs/documentation.md`. This file should detail the full finalized tech stack, the general structure of the repository, and any other relevant architectural notes.
+2. For website projects, ensure the required website documentation files from Step 3 exist and are concrete enough that another agent can scaffold or maintain the site without guessing.
+3. Delete files that are no longer needed post-setup only after confirming they are unselected starter files. Candidates may include `initialize.md`, `read-yaml.py`, and the original `README.md`.
+4. Inform the user that the setup is complete and the repository is ready for active development.

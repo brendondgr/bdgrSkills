@@ -1,42 +1,191 @@
-# Web Interface Structure
+# Web Application Structure
 
-The `web/` directory handles all web-based application components and adheres to a highly templatized hierarchy. This structure ensures clear separation between assets, templates, and component fragments.
+This reference defines approved structures for website projects. Before creating files, the agent must use `website-architecture` to select one mode, define routes, map data flow, and document frontend/backend boundaries.
 
-## Directory Layout
+## Required Planning Files
+
+Every website project must create or update:
+
+- `docs/architecture.md`
+- `docs/structure.md`
+- `docs/routes.md`
+- `docs/component-map.md`
+- `docs/data-flow.md`
+- `docs/deployment.md`
+- `docs/api-contract.md` when backend/API contracts exist
+
+## Mode A: Static Site
+
+Use for portfolios, marketing pages, documentation sites, landing pages, and other non-authenticated informational sites.
 
 ```text
-web/
+root/
+├── docs/
+├── web/
+│   ├── pages/
+│   ├── layouts/
+│   ├── components/
+│   ├── static/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   └── index.html
+├── scripts/
+└── README.md
+```
+
+## Mode B: Flask/Jinja Monolith
+
+Use when Flask renders server-side templates directly.
+
+```text
+root/
+├── docs/
+├── app/
+│   ├── __init__.py
+│   ├── routes/
+│   ├── services/
+│   ├── models/
+│   ├── schemas/
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   └── components/
+│   └── static/
+│       ├── css/
+│       ├── js/
+│       ├── images/
+│       └── vendor/
+├── tests/
+├── scripts/
+├── pyproject.toml
+├── .env.example
+└── README.md
+```
+
+## Mode C: Flask API + Frontend
+
+Use when Flask owns API endpoints and a separate frontend owns rendering.
+
+```text
+root/
+├── docs/
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── components/
+│   │   ├── features/
+│   │   ├── lib/
+│   │   ├── styles/
+│   │   └── assets/
+│   ├── public/
+│   └── package.json
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── auth/
+│   │   └── config.py
+│   ├── tests/
+│   └── pyproject.toml
+├── shared/
+│   └── contracts/
+├── scripts/
+├── .env.example
+└── README.md
+```
+
+## Mode D: Django Application
+
+Use when Django owns views, templates, apps, ORM, migrations, and admin behavior.
+
+```text
+root/
+├── docs/
+├── config/
+│   ├── settings/
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+├── apps/
+│   └── <domain_app>/
+│       ├── migrations/
+│       ├── templates/
+│       ├── static/
+│       ├── models.py
+│       ├── views.py
+│       ├── urls.py
+│       └── tests.py
 ├── static/
-│   ├── css/    # Categorized CSS files (e.g., UnoCSS variables, custom styles)
-│   └── js/     # Categorized JavaScript files (e.g., client logic, GSAP animations)
-├── images/     # Assets (SVG, PNG, WebP)
-└── templates/  # Main HTML templates and isolated components
+├── templates/
+├── scripts/
+├── pyproject.toml
+├── .env.example
+└── README.md
 ```
 
-## Components & Templates Guidelines
+## Mode E: Astro or React/Vite Frontend
 
-- **Main Templates:** Core page views (e.g., `.html` files) operate as the entry points and are placed directly inside `templates/`.
-- **Parts/Components:** Any HTML fragments or partials that build upon the main pages must be stored in sub-directories named exactly after the parent page.
-
-### Example Organization
+Use when the project is primarily a frontend app or static pre-rendered site.
 
 ```text
-web/templates/
-├── index.html                   # Main Landing Page
-├── index/                       # Components exclusive to index.html
-│   ├── hero.html
-│   ├── features.html
-│   └── footer.html
-├── dashboard.html               # Main Dashboard Page
-└── dashboard/                   # Components exclusive to dashboard.html
-    ├── nav.html
-    ├── sidebar.html
-    └── charts.html
+root/
+├── docs/
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── components/
+│   │   │   ├── ui/
+│   │   │   ├── layout/
+│   │   │   └── feature/
+│   │   ├── features/
+│   │   ├── lib/
+│   │   ├── hooks/
+│   │   ├── styles/
+│   │   └── assets/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts or astro.config.mjs
+├── scripts/
+└── README.md
 ```
 
-### Purpose Table Example
+## Mode F: Dockerized Web App
 
-| File / Folder | Purpose |
-| :--- | :--- |
-| `web/templates/index.html` | The primary entry point for the landing page. |
-| `web/templates/index/hero.html` | The hero section component for the landing page. |
+Use when local development, staging, or production must run through containers.
+
+```text
+root/
+├── docs/
+├── frontend/
+├── backend/
+├── shared/
+│   └── contracts/
+├── infra/
+│   ├── docker/
+│   ├── nginx/
+│   └── compose.yaml
+├── scripts/
+│   ├── dev.sh
+│   ├── build.sh
+│   └── test.sh
+├── .env.example
+└── README.md
+```
+
+## Ownership Guidelines
+
+- Route/page views belong in `pages/` or framework-specific route files.
+- Reusable visual pieces belong in `components/ui/`.
+- Navigation, sidebars, footers, and app chrome belong in `components/layout/` or `layouts/`.
+- Domain-specific UI belongs in `components/feature/` or `features/`.
+- Server routes belong in backend route modules or framework URL/view files.
+- API schemas, OpenAPI specs, and shared types belong in `shared/contracts/` when a frontend and backend both depend on them.

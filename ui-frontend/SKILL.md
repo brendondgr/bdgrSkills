@@ -1,9 +1,24 @@
 ---
-trigger: model_decision
-description: Use this skill when the user asks to build web components, pages, artifacts, posters, or applications. Generates creative, polished code and UI design that avoids generic AI aesthetics.
+name: ui-frontend
+description: Use this skill when designing or implementing frontend UI components, pages, dashboards, responsive layouts, visual systems, accessibility behavior, typography, colors, motion, and interactive web elements.
 ---
 
 # Frontend Design & UI System
+
+## Structural Dependency
+
+If the user asks to build a full website, dashboard, admin panel, or web application, do not treat this skill as the whole project planner. First follow the `website-architecture` rules so the application structure is defined before visual implementation begins.
+
+The UI skill should operate after these are known:
+
+- selected app mode
+- route map
+- page and component hierarchy
+- backend/API requirements
+- data source expectations
+- deployment and runtime assumptions
+
+Keep this skill focused on visual design, responsive behavior, accessibility, component polish, and frontend interaction quality.
 
 **CRITICAL REQUIREMENT**: The user MUST specify which technology stack to use for implementation. You must actively confirm the requested stack if it is not provided. Supported technologies include:
 - **Astro**
