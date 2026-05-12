@@ -195,3 +195,24 @@ root/
 - Domain-specific UI belongs in `components/feature/` or `features/`.
 - Server routes belong in backend route modules or framework URL/view files.
 - API schemas, OpenAPI specs, and shared types belong in `shared/contracts/` when a frontend and backend both depend on them.
+
+## Python Test Layout
+
+When a web project uses Python, keep lightweight tests in a top-level `tests/` directory and split them into purpose-based sub-directories as coverage grows.
+
+```text
+tests/
+├── app/
+│   ├── test_routes.py
+│   └── test_views.py
+├── auth/
+│   └── test_sessions.py
+├── data/
+│   └── test_serializers.py
+└── utils/
+    └── test_helpers.py
+```
+
+- Keep shared fixtures close to the test area they support.
+- Prefer small, targeted files over a large flat test dump.
+- Name folders after behavior or subsystem boundaries, not implementation details.

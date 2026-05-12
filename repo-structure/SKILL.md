@@ -47,6 +47,27 @@ Utilities that support the main codebase.
 ## 3. Libraries (`libs/`)
 Internal libraries and external-facing components are modularized within the `libs/` directory.
 
+## 4. Tests (`tests/`)
+Python projects should create lightweight tests over time in a top-level `tests/` directory.
+
+- Keep tests small and focused as features are added.
+- Group related Python tests into sub-directories that match the area or purpose they cover.
+- Use descriptive names so the test tree stays readable as it grows.
+- Prefer `tests/<area>/test_<behavior>.py` over a single oversized flat test folder.
+
+### Example Test Layout
+
+```text
+tests/
+├── api/
+│   ├── test_auth.py
+│   └── test_routes.py
+├── data/
+│   └── test_parsing.py
+└── utils/
+    └── test_formatting.py
+```
+
 ---
 
 ## Global Code Guidelines
