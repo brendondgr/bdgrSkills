@@ -2,6 +2,8 @@
 
 This reference defines approved structures for website projects. Before creating files, the agent must use `website-architecture` to select one mode, define routes, map data flow, and document frontend/backend boundaries.
 
+All website-specific code, assets, and runtime files live under the root `web/` directory. Repository documentation lives under `docs/`.
+
 ## Required Planning Files
 
 Every website project must create or update:
@@ -41,22 +43,23 @@ Use when Flask renders server-side templates directly.
 ```text
 root/
 ├── docs/
-├── app/
-│   ├── __init__.py
-│   ├── routes/
-│   ├── services/
-│   ├── models/
-│   ├── schemas/
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── pages/
-│   │   ├── layouts/
-│   │   └── components/
-│   └── static/
-│       ├── css/
-│       ├── js/
-│       ├── images/
-│       └── vendor/
+├── web/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── templates/
+│   │   │   ├── base.html
+│   │   │   ├── pages/
+│   │   │   ├── layouts/
+│   │   │   └── components/
+│   │   └── static/
+│   │       ├── css/
+│   │       ├── js/
+│   │       ├── images/
+│   │       └── vendor/
 ├── tests/
 ├── scripts/
 ├── pyproject.toml
@@ -71,31 +74,32 @@ Use when Flask owns API endpoints and a separate frontend owns rendering.
 ```text
 root/
 ├── docs/
-├── frontend/
-│   ├── src/
+├── web/
+│   ├── frontend/
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   ├── pages/
+│   │   │   ├── layouts/
+│   │   │   ├── components/
+│   │   │   ├── features/
+│   │   │   ├── lib/
+│   │   │   ├── styles/
+│   │   │   └── assets/
+│   │   ├── public/
+│   │   └── package.json
+│   ├── backend/
 │   │   ├── app/
-│   │   ├── pages/
-│   │   ├── layouts/
-│   │   ├── components/
-│   │   ├── features/
-│   │   ├── lib/
-│   │   ├── styles/
-│   │   └── assets/
-│   ├── public/
-│   └── package.json
-├── backend/
-│   ├── app/
-│   │   ├── __init__.py
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── models/
-│   │   ├── schemas/
-│   │   ├── auth/
-│   │   └── config.py
-│   ├── tests/
-│   └── pyproject.toml
-├── shared/
-│   └── contracts/
+│   │   │   ├── __init__.py
+│   │   │   ├── routes/
+│   │   │   ├── services/
+│   │   │   ├── models/
+│   │   │   ├── schemas/
+│   │   │   ├── auth/
+│   │   │   └── config.py
+│   │   ├── tests/
+│   │   └── pyproject.toml
+│   └── shared/
+│       └── contracts/
 ├── scripts/
 ├── .env.example
 └── README.md
@@ -108,22 +112,23 @@ Use when Django owns views, templates, apps, ORM, migrations, and admin behavior
 ```text
 root/
 ├── docs/
-├── config/
-│   ├── settings/
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-├── apps/
-│   └── <domain_app>/
-│       ├── migrations/
-│       ├── templates/
-│       ├── static/
-│       ├── models.py
-│       ├── views.py
-│       ├── urls.py
-│       └── tests.py
-├── static/
-├── templates/
+├── web/
+│   ├── config/
+│   │   ├── settings/
+│   │   ├── urls.py
+│   │   ├── asgi.py
+│   │   └── wsgi.py
+│   ├── apps/
+│   │   └── <domain_app>/
+│   │       ├── migrations/
+│   │       ├── templates/
+│   │       ├── static/
+│   │       ├── models.py
+│   │       ├── views.py
+│   │       ├── urls.py
+│   │       └── tests.py
+│   ├── static/
+│   └── templates/
 ├── scripts/
 ├── pyproject.toml
 ├── .env.example
@@ -137,7 +142,7 @@ Use when the project is primarily a frontend app or static pre-rendered site.
 ```text
 root/
 ├── docs/
-├── frontend/
+├── web/
 │   ├── src/
 │   │   ├── app/
 │   │   ├── pages/
@@ -165,10 +170,11 @@ Use when local development, staging, or production must run through containers.
 ```text
 root/
 ├── docs/
-├── frontend/
-├── backend/
-├── shared/
-│   └── contracts/
+├── web/
+│   ├── frontend/
+│   ├── backend/
+│   └── shared/
+│       └── contracts/
 ├── infra/
 │   ├── docker/
 │   ├── nginx/

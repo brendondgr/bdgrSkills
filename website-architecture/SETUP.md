@@ -2,6 +2,8 @@
 
 Before creating or modifying a website, dashboard, or web application, answer these questions and use the answers to create the architecture planning artifact.
 
+All website material belongs in the root `web/` directory. All documentation belongs in `docs/`.
+
 ## 1. Application Type
 
 Which primary mode should this project use?

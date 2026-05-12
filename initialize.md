@@ -23,6 +23,8 @@ For each selected sub-directory (for example, `repo-structure`, `website-archite
 
 If the user's project goals mention a website, web app, dashboard, admin panel, frontend, UI, Flask, Django, Astro, React, Vite, static site, or API-backed web interface, or if either `repo-structure` or `ui-frontend` is selected for a web project, you must include and run the `website-architecture` setup phase before any UI generation.
 
+For website projects, all site-specific code, assets, routes, and runtime files must live under the root `web/` directory, and all repository documentation must live under `docs/`.
+
 For website projects, the setup phase must produce a concise architecture planning artifact before Step 5. This artifact must define:
 
 - application mode

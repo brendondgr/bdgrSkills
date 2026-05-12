@@ -7,6 +7,8 @@ description: Use this skill when planning, scaffolding, restructuring, or docume
 
 This skill defines the structural phase that must happen before UI code is generated for a website or web application. It sits between universal repository structure and frontend visual implementation.
 
+All website-specific code, assets, routes, and runtime files must live under the root `web/` directory. Repository-level documentation remains under `docs/`.
+
 ## Required Outputs
 
 Before generating website files, define:
