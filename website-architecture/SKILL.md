@@ -9,6 +9,8 @@ This skill defines the structural phase that must happen before UI code is gener
 
 All website-specific code, assets, routes, and runtime files must live under the root `web/` directory. Repository-level documentation remains under `docs/`.
 
+For any web-facing project, include `accessibility-mobile` and `ada-compliance` with this skill so mobile-readiness and WCAG/ADA requirements are captured before implementation is declared complete.
+
 ## Required Outputs
 
 Before generating website files, define:

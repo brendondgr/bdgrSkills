@@ -9,6 +9,11 @@ description: Use this skill when designing or implementing frontend UI component
 
 If the user asks to build a full website, dashboard, admin panel, or web application, do not treat this skill as the whole project planner. First follow the `website-architecture` rules so the application structure is defined before visual implementation begins.
 
+For web-facing projects, this skill should also be paired with:
+
+- `accessibility-mobile` for responsive viewport, touch, mobile performance, and mobile SEO checks.
+- `ada-compliance` for WCAG/ADA accessibility requirements.
+
 The UI skill should operate after these are known:
 
 - selected app mode
@@ -46,3 +51,8 @@ This system guides the creation of distinctive, production-grade interfaces. It 
 - [Modals & Popups](ui/modals.md)
 - [Icons System](ui/icons.md)
 - [Data Visualization & Graphs](ui/data-viz.md)
+
+## Related Skills
+
+- [Mobile Accessibility and Responsive UX](../accessibility-mobile/SKILL.md)
+- [ADA and WCAG Compliance](../ada-compliance/SKILL.md)

@@ -20,6 +20,10 @@ ProjectRoot/
 |   |-- skills/
 |   |   |-- global-project-rules/
 |   |   |   `-- SKILL.md
+|   |   |-- accessibility-mobile/
+|   |   |   `-- SKILL.md
+|   |   |-- ada-compliance/
+|   |   |   `-- SKILL.md
 |   |   |-- repository-structure/
 |   |   |   |-- SKILL.md
 |   |   |   |-- SETUP.md
@@ -134,6 +138,7 @@ Do not proceed to Step 2 until the intake answers are specific enough that anoth
 3. Cross-reference available skills with the user's goals and intake answers.
 4. Propose a curated skill list and explain what each selected skill contributes.
 5. Include `global-project-rules` as a required generated skill, even though it may not exist yet.
+6. For any website, web app, dashboard, frontend, UI, or API-backed web interface, include `accessibility-mobile` and `ada-compliance` unless the user explicitly excludes them.
 
 Wait for the user to confirm or modify the selected skill list before proceeding.
 
@@ -147,12 +152,16 @@ Examples:
 - `website-architecture/SETUP.md` for website, dashboard, frontend, route, data-flow, and API decisions.
 - `ui-frontend/SETUP.md` for visual and UI system decisions.
 - `plan/SETUP.md` for planning and handoff rules.
+- `accessibility-mobile/SKILL.md` for mobile-responsive and touch-friendly web requirements.
+- `ada-compliance/SKILL.md` for WCAG/ADA accessibility requirements.
 
 If a selected skill has no `SETUP.md`, inspect its `SKILL.md` and supporting files, then ask only the missing questions needed to use it correctly.
 
 ### Required Website Architecture Branch
 
 If the user's project goals mention a website, web app, dashboard, admin panel, frontend, UI, Flask, Django, Astro, React, Vite, static site, or API-backed web interface, or if either `repo-structure` or `ui-frontend` is selected for a web project, include and run the `website-architecture` setup phase before any UI generation.
+
+For web-facing projects, include `accessibility-mobile` and `ada-compliance` in the selected skills. These two skills define the mobile-readiness and accessibility checks that must be reflected in `docs/workflow.md`, `docs/checklist.md`, and any UI implementation handoff.
 
 For website projects:
 
@@ -215,7 +224,7 @@ Preserve important supporting files from selected skills, such as:
 - `scripts/`
 - `assets/`
 
-Do not leave the only copy of an active skill in a starter directory such as `repo-structure/`, `ui-frontend/`, `website-architecture/`, or `plan/`. Those starter directories are initialization inputs, not the final source of truth, unless the user explicitly chooses to keep them as canonical.
+Do not leave the only copy of an active skill in a starter directory such as `repo-structure/`, `ui-frontend/`, `website-architecture/`, `plan/`, `accessibility-mobile/`, or `ada-compliance/`. Those starter directories are initialization inputs, not the final source of truth, unless the user explicitly chooses to keep them as canonical.
 
 ## Step 6: Generate Agent Pointer Files
 
