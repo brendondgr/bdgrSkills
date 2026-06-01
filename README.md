@@ -2,7 +2,7 @@
 
 This repository is a reusable instruction pack for setting up early project structure, project documentation, and agent-facing skills before active development begins.
 
-It is not meant to be copied into a final project unchanged. Use it as a starter kit: run the intake process, select the relevant skills, generate canonical project docs under `docs/`, create lightweight agent pointer files, then clean up setup-only files.
+It is not meant to be copied into a final project unchanged. Use it as a starter kit for an AI agent: the agent runs intake, selects relevant skills with user approval, generates canonical project docs under `docs/`, creates lightweight agent pointer files, then cleans up setup-only files.
 
 ## What This Repository Contains
 
@@ -17,9 +17,9 @@ It is not meant to be copied into a final project unchanged. Use it as a starter
 
 ## How To Use It In A New Project
 
-1. Copy this repository's setup files into the root of the new project.
+1. Make this repository's setup files available in the root of the new project.
 
-   At minimum, include:
+   At minimum, the agent needs access to:
 
    - `initialize.md`
    - `read-yaml.py`
@@ -30,7 +30,11 @@ It is not meant to be copied into a final project unchanged. Use it as a starter
 
    The agent should not start scaffolding immediately. It must first ask enough questions to understand the project goal, runtime, framework, target users, validation workflow, supported agent tools, and cleanup expectations.
 
-3. Run skill discovery.
+After that, the AI agent is responsible for the rest of the initialization workflow. The human should answer the agent's intake questions and approve important choices, but the agent should perform the repository setup work.
+
+## What The Agent Must Do
+
+1. Run skill discovery.
 
    ```powershell
    uv run read-yaml.py
@@ -38,7 +42,7 @@ It is not meant to be copied into a final project unchanged. Use it as a starter
 
    This prints the available skills so the agent can propose which ones apply.
 
-4. Select the relevant skills.
+2. Propose the relevant skills and get user confirmation.
 
    Common selections:
 
@@ -46,7 +50,7 @@ It is not meant to be copied into a final project unchanged. Use it as a starter
    - Website or web app: `repo-structure`, `website-architecture`, `ui-frontend`, `accessibility-mobile`, `ada-compliance`
    - Frontend-heavy app: add `ui-frontend` and use `ui-frontend/ui/design-quality.md`
 
-5. Generate canonical project documentation.
+3. Generate canonical project documentation.
 
    The target project should use `docs/` as the source of truth:
 
@@ -74,7 +78,7 @@ It is not meant to be copied into a final project unchanged. Use it as a starter
    - `docs/design-system.md`
    - `docs/api-contract.md` when an API/backend exists
 
-6. Create agent pointer files.
+4. Create agent pointer files.
 
    Agent-specific folders should not duplicate full instructions. They should point to `docs/skills/global-project-rules/SKILL.md` and the relevant canonical skill files under `docs/skills/`.
 
@@ -88,7 +92,7 @@ It is not meant to be copied into a final project unchanged. Use it as a starter
    | Gemini CLI | `.gemini/skills/<skill-name>/SKILL.md` |
    | Antigravity | `.agent/skills/<skill-name>/SKILL.md` |
 
-7. Clean up setup-only files.
+5. Clean up setup-only files.
 
    After selected skills are migrated into `docs/skills/`, remove starter directories and helper files that are no longer needed. The final project should not have competing sources of truth.
 
