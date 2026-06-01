@@ -25,24 +25,15 @@ my-langgraph-app/
 │   ├── dev.py
 │   └── seed_data.py
 ├── utils/
-│   └── my_agent/
+│   └── multi_agent/
 │       ├── __init__.py
-│       ├── main.py                 # app entrypoint / graph export
+│       ├── main.py                 # app entrypoint / super-graph export
 │       ├── config.py               # settings, env loading
-│       ├── state/
+│       ├── core_state/             # global state shared across agents
 │       │   ├── __init__.py
 │       │   ├── schemas.py          # TypedDict / Pydantic models
 │       │   └── reducers.py
-│       ├── graphs/
-│       │   ├── __init__.py
-│       │   ├── assistant_graph.py
-│       │   └── retrieval_graph.py
-│       ├── nodes/
-│       │   ├── __init__.py
-│       │   ├── planner.py
-│       │   ├── responder.py
-│       │   └── router.py
-│       ├── tools/
+│       ├── shared_tools/
 │       │   ├── __init__.py
 │       │   ├── search.py
 │       │   └── crm.py
@@ -50,9 +41,25 @@ my-langgraph-app/
 │       │   ├── llm.py
 │       │   ├── vectorstore.py
 │       │   └── memory.py
-│       ├── prompts/
-│       │   ├── system.py
-│       │   └── templates/
+│       ├── agents/                 # individual agents
+│       │   ├── orchestrator/
+│       │   │   ├── __init__.py
+│       │   │   ├── graph.py
+│       │   │   ├── nodes.py
+│       │   │   ├── state.py
+│       │   │   └── prompts.py
+│       │   ├── planner/
+│       │   │   ├── __init__.py
+│       │   │   ├── graph.py
+│       │   │   ├── nodes.py
+│       │   │   ├── state.py
+│       │   │   └── prompts.py
+│       │   └── validator/
+│       │       ├── __init__.py
+│       │       ├── graph.py
+│       │       ├── nodes.py
+│       │       ├── state.py
+│       │       └── prompts.py
 │       └── observability/
 │           ├── logging.py
 │           └── tracing.py
@@ -62,9 +69,11 @@ my-langgraph-app/
 
 ## Folder roles
 
-Keep `graphs/` focused only on assembling nodes, edges, conditional routing, and compilation, since LangGraph itself centers on defining graphs and compiling them into deployable applications.  Put actual node behavior in `nodes/`, tool wrappers in `tools/`, and shared external integrations like model clients or vector stores in `services/`, so each layer has a single reason to change.
+In a multi-agent setup, group each agent into its own folder under `agents/` (e.g., `orchestrator/`, `planner/`, `validator/`). Inside each agent folder, keep `graph.py` focused only on assembling nodes, edges, conditional routing, and compilation for that specific agent. Put actual node behavior in `nodes.py` (or a `nodes/` folder if complex), and agent-specific state in `state.py`. 
 
-Keep state definitions isolated in `state/`, because state is one of the core concepts in LangGraph graph design and tends to become the hidden source of complexity if it is spread across files.  Put prompts in their own `prompts/` directory instead of embedding them inside nodes, which makes prompt iteration safer and easier to review.
+Keep global/shared state definitions isolated in `core_state/` (or similar), because state is one of the core concepts in LangGraph graph design and tends to become a hidden source of complexity if global and agent-specific states get mixed. 
+
+Shared tool wrappers go in `shared_tools/`, and shared external integrations like model clients or vector stores in `services/`. Prompts should be kept in `prompts.py` or a `prompts/` directory within their respective agent folder instead of embedding them inside nodes, which makes prompt iteration safer and easier to review.
 
 ## Practical rules
 
@@ -86,14 +95,16 @@ Also avoid mixing deployment files, prompt text, graph compilation, and provider
 If you want the simplest version that still stays clean, start with this:
 
 ```text
-utils/my_agent/
-├── main.py
-├── state.py
-├── nodes.py
-├── tools.py
-└── prompts.py
+utils/multi_agent/
+├── main.py             # composes the agents into a main graph
+├── shared_state.py
+├── shared_tools.py
+└── agents/
+    ├── orchestrator.py
+    ├── planner.py
+    └── validator.py
 ```
 
-That mirrors the structure shown in LangChain’s docs and is enough for a small project. As soon as you have more than one graph, multiple external integrations, or more than 5 to 7 nodes, split into the larger package structure above so the repository remains readable.
+This is enough for a small multi-agent project. As soon as individual agents grow complex, have their own multiple tools, or require separate prompt management, split into the larger package structure above so the repository remains readable.
 
 A good rule of thumb is: if a new contributor cannot answer “where is the state defined, where is the graph wired, and where is the tool logic implemented?” in under a minute, the repo structure needs tightening.
