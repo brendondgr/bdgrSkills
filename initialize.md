@@ -28,6 +28,9 @@ ProjectRoot/
 |   |   |   |-- SKILL.md
 |   |   |   |-- SETUP.md
 |   |   |   `-- structures/
+|   |   |-- website-architecture/
+|   |   |   |-- SKILL.md
+|   |   |   `-- SETUP.md
 |   |   |-- planner/
 |   |   |   |-- SKILL.md
 |   |   |   `-- planner.md
@@ -84,6 +87,7 @@ For website, dashboard, frontend, or API-backed web projects, also create or upd
 - `docs/component-map.md`
 - `docs/data-flow.md`
 - `docs/deployment.md`
+- `docs/design-system.md`
 - `docs/api-contract.md` when a backend or API contract exists
 
 ## Global Project Rules Skill
@@ -159,7 +163,7 @@ If a selected skill has no `SETUP.md`, inspect its `SKILL.md` and supporting fil
 
 ### Required Website Architecture Branch
 
-If the user's project goals mention a website, web app, dashboard, admin panel, frontend, UI, Flask, Django, Astro, React, Vite, static site, or API-backed web interface, or if either `repo-structure` or `ui-frontend` is selected for a web project, include and run the `website-architecture` setup phase before any UI generation.
+If the user's project goals mention a website, web app, dashboard, admin panel, frontend, UI, Flask, Django, FastAPI, Astro, SvelteKit, React, Next.js, Vite, static site, or API-backed web interface, or if either `repo-structure` or `ui-frontend` is selected for a web project, include and run the `website-architecture` setup phase before any UI generation.
 
 For web-facing projects, include `accessibility-mobile` and `ada-compliance` in the selected skills. These two skills define the mobile-readiness and accessibility checks that must be reflected in `docs/workflow.md`, `docs/checklist.md`, and any UI implementation handoff.
 
@@ -172,10 +176,12 @@ For website projects:
 The website planning artifact must define:
 
 - application mode
+- selected frontend framework and optional libraries
 - user roles and auth boundaries
 - route map
 - data-flow map
 - frontend/backend boundary
+- design-system and anti-generic quality brief
 - selected repository layout
 - required documentation files
 - build, run, and test commands
